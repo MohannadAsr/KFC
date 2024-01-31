@@ -11,7 +11,7 @@ dotEnv.config({ path: './config.env' });
 const PORT = process.env.PORT || 4000;
 
 const db = require('./models');
-db.sequelize.sync().then(() => {
+db.sequelize.sync().then(8080, () => {
   const server = app.listen(() => {
     console.log(`App Running on Port ${PORT}`);
   });
