@@ -6,6 +6,7 @@ const cors = require('cors');
 const productsRouter = require('./routes/productsRouter');
 const usersRouter = require('./routes/usersRouter');
 const transactionsRouter = require('./routes/transactionsRouter');
+const resetRouter = require('./routes/resetRouter');
 const AppError = require('./utils/appError');
 const globalErrorController = require('./controllers/errorController');
 // Define the Server
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 app.use('/transactions', transactionsRouter);
+app.use('/resetdatabase', resetRouter);
 
 // All Unhandled Routes [Must be the last Route or it will be handled no matter what is the req url]
 app.all('*', (req, res, next) => {
