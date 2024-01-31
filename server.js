@@ -8,11 +8,16 @@ dotEnv.config({ path: './config.env' });
 // Connecting to MongoDB Database
 
 // Make the Server Listening in Event Loop
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.NODE_ENV == 'production' ? 8080 : 3000;
+console.log(PORT);
 
 const db = require('./models');
 db.sequelize.sync().then(() => {
-  const server = app.listen(3000, () => {
-    console.log(`App Running on Port ${PORT}`);
-  });
+  const server = app.listen(
+    PORT,
+
+    () => {
+      console.log(`App Running on Port ${PORT}`);
+    }
+  );
 });
