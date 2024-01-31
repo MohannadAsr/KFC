@@ -1,25 +1,26 @@
 {
   "development": {
-    "username": "dbu2478792",
+    "username": "dbu5405751",
     "password": "rozalenda22",
-    "database": "dbs12536296",
-    "host": "db5015121318.hosting-data.io",
+    "database": "dbs12537423",
+    "host": "db5015132313.hosting-data.io",
     "port": 3306,
     "dialect": "mysql"
   },
   "test": {
-    "username": "dbu2478792",
+    "username": "dbu5405751",
     "password": "rozalenda22",
-    "database": "dbs12536296",
-    "host": "db5015121318.hosting-data.io",
+    "database": "dbs12537423",
+    "host": "db5015132313.hosting-data.io",
     "port": 3306,
     "dialect": "mysql"
   },
   "production": {
-    "username": "dbu2478792",
+    "username": "dbu5405751",
     "password": "rozalenda22",
-    "database": "dbs12536296",
-    "host": "db5015121318.hosting-data.io",
-    "port": 3306
+    "database": "dbs12537423",
+    "host": "db5015132313.hosting-data.io",
+    "port": 3306,
+    "dialect": "mysql"
   }
 }
