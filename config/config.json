@@ -1,25 +1,25 @@
 {
   "development": {
-    "username": "dbu5405751",
-    "password": "rozalenda22",
-    "database": "dbs12537423",
-    "host": "db5015132313.hosting-data.io",
+    "username": "ukvhew6mmnakx80o",
+    "password": "bhWL0XnqQ0U12mNYosWD",
+    "database": "buiy6vn5mhik27wswe1j",
+    "host": "buiy6vn5mhik27wswe1j-mysql.services.clever-cloud.com",
     "port": 3306,
     "dialect": "mysql"
   },
   "test": {
-    "username": "dbu5405751",
-    "password": "rozalenda22",
-    "database": "dbs12537423",
-    "host": "db5015132313.hosting-data.io",
+    "username": "ukvhew6mmnakx80o",
+    "password": "bhWL0XnqQ0U12mNYosWD",
+    "database": "buiy6vn5mhik27wswe1j",
+    "host": "buiy6vn5mhik27wswe1j-mysql.services.clever-cloud.com",
     "port": 3306,
     "dialect": "mysql"
   },
   "production": {
-    "username": "dbu5405751",
-    "password": "rozalenda22",
-    "database": "dbs12537423",
-    "host": "db5015132313.hosting-data.io",
+    "username": "ukvhew6mmnakx80o",
+    "password": "bhWL0XnqQ0U12mNYosWD",
+    "database": "buiy6vn5mhik27wswe1j",
+    "host": "buiy6vn5mhik27wswe1j-mysql.services.clever-cloud.com",
     "port": 3306,
     "dialect": "mysql"
   }
