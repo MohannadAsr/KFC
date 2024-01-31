@@ -1,0 +1,25 @@
+{
+  "development": {
+    "username": "dbu2478792",
+    "password": "rozalenda22",
+    "database": "dbs12536296",
+    "host": "db5015121318.hosting-data.io",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "dbu2478792",
+    "password": "rozalenda22",
+    "database": "dbs12536296",
+    "host": "db5015121318.hosting-data.io",
+    "port": 3306,
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "dbu2478792",
+    "password": "rozalenda22",
+    "database": "dbs12536296",
+    "host": "db5015121318.hosting-data.io",
+    "port": 3306
+  }
+}
