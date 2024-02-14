@@ -15,7 +15,15 @@ router
   .delete(
     usersController.protectRoute,
     usersController.restrictTo('admin'),
-    productController.deleteProduct
+    productController.deleteProducts
+  );
+
+router
+  .route('/updateproduct')
+  .post(
+    usersController.protectRoute,
+    usersController.restrictTo('admin'),
+    productController.updateProduct
   );
 
 module.exports = router;

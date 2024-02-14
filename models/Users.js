@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+
 module.exports = (sequelize) => {
   const Users = sequelize.define('Users', {
     id: {
@@ -13,17 +14,23 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM('worker', 'admin', 'branch'),
+      type: DataTypes.ENUM('supplier', 'admin', 'branch'),
       allowNull: false,
     },
     code: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isNumeric: true,
+        // isNumeric: false,
         len: [5, 5], // E
       },
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.fn('NOW'),
+      // defaultValue: Sequelize.fn('NOW'), // Alternatively, you can use NOW()
     },
   });
 

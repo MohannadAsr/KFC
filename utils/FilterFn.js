@@ -26,7 +26,6 @@ const FilterFn = (filterOptions) => {
       [Op.between]: [new Date(), new Date(filterOptions.endDate)],
     };
   }
-  console.log(whereClause);
 
   return whereClause;
 };

@@ -4,8 +4,8 @@ const catchAsync = require('../utils/catchAsync');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
-const getaccessToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
+exports.getaccessToken = (id, code) => {
+  return jwt.sign({ id, code }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES,
   });
 };
@@ -20,7 +20,7 @@ exports.createUser = catchAsync(async (req, res, next) => {
   });
   // If a user with the same code exists, return an error
   if (duplicateCheck) {
-    return next(new AppError('User Already Exists', 401));
+    return next(new AppError('Code Already Used', 400));
   }
 
   // Create a new user if no duplicate is found
@@ -29,11 +29,48 @@ exports.createUser = catchAsync(async (req, res, next) => {
   res.json({ status: 'done', data: newUser });
 });
 
-exports.getAllUsers = async (req, res) => {
-  const users = await Users.findAll();
-  console.log(users);
+exports.deleteUsers = catchAsync(async (req, res) => {
+  const userIds = req.body;
+  // Delete users based on the provided array of user IDs
+  const deletedUsers = await Users.destroy({
+    where: { id: userIds },
+  });
+
+  if (deletedUsers > 0) {
+    return res.status(200).json({ message: 'Users deleted successfully' });
+  } else {
+    next(new AppError('No users found with the provided IDs', 404));
+  }
+});
+
+exports.updateuser = catchAsync(async (req, res, nex) => {
+  // Assuming req.body contains the updated product information
+  const updatedUser = await Users.update(req.body, {
+    where: {
+      id: req.body.id,
+    },
+  });
+
+  // Check if any rows were affected (updated)
+  if (updatedUser[0] === 0) {
+    return res.status(404).json({ message: 'user not found or not updated.' });
+  }
+
+  // Optionally, fetch the updated product and send it in the response
+  const updateUserInstance = await Users.findByPk(req.body.id);
+  res.status(200).json({
+    message: 'user updated successfully',
+    user: updateUserInstance,
+  });
+});
+
+exports.getAllUsers = catchAsync(async (req, res, next) => {
+  const users = await Users.findAll({
+    attributes: { exclude: req?.user?.role !== 'admin' ? ['code'] : [] },
+    order: [['createdAt', 'DESC']],
+  });
   res.json({ status: 200, data: users });
-};
+});
 
 // Login Controller
 exports.login = catchAsync(async (req, res, next) => {
@@ -43,20 +80,23 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!code) {
     return next(new AppError('Please provide the code', 400));
   }
-
   // Check if the user exists and the code is correct
   const user = await Users.findOne({ where: { code: code } });
   if (!user) {
-    return next(new AppError('Incorrect Code', 401));
+    return next(new AppError('Incorrect Code', 400));
   }
 
   // Generate and send the JWT token
-  let token = getaccessToken(user.id);
+  let token = this.getaccessToken(user.id, user.code);
 
   res.status(200).json({
     status: 'success',
-    token,
-    user,
+    data: {
+      name: user.name,
+      role: user.role,
+      id: user.id,
+      token,
+    },
   });
 });
 
@@ -75,9 +115,11 @@ exports.protectRoute = catchAsync(async (req, res, next) => {
   // 2- Verify the token
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  // 3- check if user still exist
 
-  const currentUser = await Users.findOne({ where: { id: decoded.id } });
+  // 3- check if user still exist
+  const currentUser = await Users.findOne({
+    where: { id: decoded.id, code: decoded.code },
+  });
   if (!currentUser) {
     return next(
       new AppError(
