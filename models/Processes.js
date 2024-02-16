@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Date.now(),
+      defaultValue: DataTypes.NOW,
       // defaultValue: Sequelize.fn('NOW'), // Alternatively, you can use NOW()
     },
   });

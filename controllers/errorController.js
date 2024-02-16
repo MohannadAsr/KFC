@@ -81,7 +81,7 @@ const handleValidationError = (err, res) => {
 };
 
 const handleUniqueConstraintError = (err) => {
-  const message = `Code Already Used`;
+  const message = `Duplicated Input`;
   return new AppError(message, 400);
 };
 
