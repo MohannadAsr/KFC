@@ -139,14 +139,45 @@ exports.getProcesses = catchAsync(async (req, res, next) => {
     offset: offset,
   });
 
+  // total count for pagination
   const totalCount = await Processes.count({
     where: whereClause,
+  });
+
+  // get the statistics from processes without pagination
+  const fullProcessWithoutPagination = await Processes.findAll({
+    order: [['createdAt', 'DESC']],
+    where: whereClause,
+
+    offset: offset,
+  });
+
+  const flatData = fullProcessWithoutPagination.flatMap(
+    (item) => item.productsList
+  );
+  const groupedBy = flatData.reduce((acc, item) => {
+    const key = item.id;
+    acc[key] = acc[key] || [];
+    acc[key].push(item);
+    return acc;
+  }, {});
+
+  const final = Object.keys(groupedBy).map((group) => {
+    const totalCount = groupedBy[group]
+      .map((item) => item.quantity)
+      .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    return {
+      id: group,
+      name: groupedBy[group][0].productName,
+      totalCount: totalCount,
+    };
   });
 
   res.status(200).json({
     status: 'success',
     data: {
       processes,
+      stats: final,
       pagination: {
         pageIndex: page,
         pageSize,

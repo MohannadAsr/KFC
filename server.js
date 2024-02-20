@@ -7,7 +7,7 @@ dotEnv.config({ path: './config.env' });
 // Connecting to MongoDB Database
 
 // Make the Server Listening in Event Loop
-const PORT = process.env.NODE_ENV == 'development' ? 3001 : 8080;
+const PORT = process.env.NODE_ENV === 'development' ? 3001 : 8080;
 console.log(PORT);
 
 const db = require('./models');
