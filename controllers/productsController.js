@@ -6,7 +6,7 @@ const { Transactions } = require('../models');
 exports.getAllProducts = catchAsync(async (req, res) => {
   try {
     const productList = await Products.findAll({
-      order: [['createdAt', 'DESC']],
+      order: [['updatedAt', 'DESC']],
     });
     res.json({ status: 200, data: productList });
   } catch (error) {
