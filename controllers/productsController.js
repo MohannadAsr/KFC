@@ -19,7 +19,7 @@ exports.createProduct = catchAsync(async (req, res, next) => {
   res.json({ data: newProduct });
 });
 
-exports.deleteProducts = catchAsync(async (req, res) => {
+exports.deleteProducts = catchAsync(async (req, res, next) => {
   const productsIds = req.body;
   // Delete users based on the provided array of user IDs
   const deletedPorducts = await Products.destroy({
@@ -33,7 +33,7 @@ exports.deleteProducts = catchAsync(async (req, res) => {
   }
 });
 
-exports.updateProduct = catchAsync(async (req, res, nex) => {
+exports.updateProduct = catchAsync(async (req, res, next) => {
   // Assuming req.body contains the updated product information
   const updatedProduct = await Products.update(req.body, {
     where: {

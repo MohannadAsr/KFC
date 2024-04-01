@@ -81,7 +81,7 @@ exports.createProcess = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.deleteProcesses = catchAsync(async (req, res) => {
+exports.deleteProcesses = catchAsync(async (req, res, next) => {
   const processesIds = req.body;
   // Delete users based on the provided array of user IDs
   const deletedPorducts = await Processes.destroy({
