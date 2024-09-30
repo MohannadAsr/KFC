@@ -1,25 +1,25 @@
 {
   "development": {
-    "username": "root",
-    "password": "rozalenda22",
-    "database": "kfc-base",
-    "host": "127.0.0.1",
+    "username": "mohannad",
+    "password": "MyStr0ng#Pass",
+    "database": "mychicken-storage",
+    "host": "c10efba.online-server.cloud",
     "port": 3306,
     "dialect": "mysql"
   },
   "test": {
-    "username": "ubyiefaxyhl08idy",
-    "password": "bxhGUQqWWzFb7e8Y262z",
-    "database": "bktih4qohhtgwa2nir7l",
-    "host": "bktih4qohhtgwa2nir7l-mysql.services.clever-cloud.com",
+    "username": "mohannad",
+    "password": "MyStr0ng#Pass",
+    "database": "mychicken-storage",
+    "host": "c10efba.online-server.cloud",
     "port": 3306,
     "dialect": "mysql"
   },
   "production": {
-    "username": "ubyiefaxyhl08idy",
-    "password": "bxhGUQqWWzFb7e8Y262z",
-    "database": "bktih4qohhtgwa2nir7l",
-    "host": "bktih4qohhtgwa2nir7l-mysql.services.clever-cloud.com",
+    "username": "mohannad",
+    "password": "MyStr0ng#Pass",
+    "database": "mychicken-storage",
+    "host": "c10efba.online-server.cloud",
     "port": 3306,
     "dialect": "mysql"
   }
