@@ -3,7 +3,7 @@
     "username": "mohannad",
     "password": "MyStr0ng#Pass",
     "database": "mychicken-storage",
-    "host": "c10efba.online-server.cloud",
+    "host": "85.215.107.121",
     "port": 3306,
     "dialect": "mysql"
   },
@@ -11,7 +11,7 @@
     "username": "mohannad",
     "password": "MyStr0ng#Pass",
     "database": "mychicken-storage",
-    "host": "c10efba.online-server.cloud",
+    "host": "85.215.107.121",
     "port": 3306,
     "dialect": "mysql"
   },
@@ -19,7 +19,7 @@
     "username": "mohannad",
     "password": "MyStr0ng#Pass",
     "database": "mychicken-storage",
-    "host": "c10efba.online-server.cloud",
+    "host": "85.215.107.121",
     "port": 3306,
     "dialect": "mysql"
   }
